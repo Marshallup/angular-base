@@ -1,0 +1,11 @@
+@import "src/assets/styles/vars.scss";
+
+.app-header {
+  color: $global-inverse-color;
+
+  &__container {
+    padding-top: $global-margin;
+    padding-bottom: $global-margin;
+    background-color: $global-primary-background;
+  }
+}

@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@import "src/assets/styles/vars.scss";
+
+// // 3. Your custom mixin overwrites.
+// @mixin hook-card() {
+//   color: #000;
+// }
+
+// 4. Import UIkit.
+
+@import "uikit/src/scss/uikit-theme.scss";

@@ -1,0 +1,9 @@
+<div class="app-checkbox">
+  <input class="app-checkbox__el" type="hidden" [formControl]="value" />
+
+  <div
+    class="app-checkbox__item"
+    [class.checked]="!!value.getRawValue()"
+    (click)="toggleValue()"
+  ></div>
+</div>
