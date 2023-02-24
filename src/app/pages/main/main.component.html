@@ -1,33 +1,16 @@
-<ul class="uk-list">
-  <li>
-    <!-- <label> -->
-      <app-checkbox [value]="checked" />
-      <!-- <app-checkbox /> -->
-      <!-- <input class="uk-radio" type="radio" name="radio2" checked /> A -->
-    <!-- </label> -->
-    item
-  </li>
-</ul>
+<app-checkbox-n [(ngModel)]="testValue" label="test" />
 
-<!-- <p>main works!</p>
+<!-- <app-checkbox-n [ngModel]="tet" label="tttess" /> -->
 
-<button appTest [zoomSize]="20" (click)="toggleClone()">btn</button>
-{{ clone }}
-<div *appDuplicateContent="clone">{{ text }}</div> -->
+{{ testValue }}
 
-<!-- <div class="uk-section">
-  <div class="uk-container">
-    <form>
-      <fieldset class="uk-fieldset">
-        <div class="uk-margin">
-          <input
-            class="uk-input"
-            type="text"
-            placeholder="Input"
-            aria-label="Input"
-          />
-        </div>
-      </fieldset>
-    </form>
-  </div>
-</div> -->
+
+<form [formGroup]="form">
+  <app-checkbox-n formControlName="test" />
+</form>
+
+<pre>
+  {{ form.value | json }}
+</pre>
+
+<app-task-list />

@@ -3,12 +3,12 @@
     [id]="controllId"
     class="app-checkbox__el"
     type="hidden"
-    [formControl]="value"
+    [value]="ngModel"
   />
 
   <div
     class="app-checkbox__item uk-margin-small-right"
-    [class.checked]="!!value.getRawValue()"
+    [class.checked]="ngModel"
     (click)="toggleValue()"
   ></div>
 

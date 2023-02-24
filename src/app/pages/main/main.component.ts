@@ -1,28 +1,42 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+// import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
 })
-export class MainComponent implements OnChanges  {
+export class MainComponent implements OnChanges {
+  form: FormGroup;
+  testValue = false;
+  // checked = new FormControl(true);
 
-  checked = new FormControl(true)
+  // constructor() {
+  //   this.onChange()
+  // }
 
-  constructor() {
-    this.onChange()
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      test: true,
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes, 'changes')
+    console.log(changes, 'changes');
   }
 
-  onChange() {
-    this.checked.valueChanges.subscribe(item => {
-      console.log(item, 'subscribe change')
-    })
-  }
+  // ngOnInit(): void {
+  //   this.form = this.fb.group({
+  //     test: false,
+  //   });
+  // }
+
+  // onChange() {
+  //   this.checked.valueChanges.subscribe(item => {
+  //     console.log(item, 'subscribe change')
+  //   })
+  // }
 
   // @Input() clone = false
   // @Input() text = 'Content for duplication'
