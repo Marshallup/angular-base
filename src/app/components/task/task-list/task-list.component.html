@@ -1,8 +1,7 @@
 <ul class="uk-list uk-list-divider">
-  <li>
-    <app-task-item label="test" />
-  </li>
-  <li>
-    <app-task-item label="test" />
+  <li *ngFor="let task of tasks">
+    <app-task-item [completed]="task.completed" [title]="task.title" (onCompleted)="onCompletedTask($event, task.id)" />
   </li>
 </ul>
+
+{{ tasks | json }}

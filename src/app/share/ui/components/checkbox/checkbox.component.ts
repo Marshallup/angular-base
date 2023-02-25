@@ -1,31 +1,60 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {
+  Component,
+  EventEmitter,
+  forwardRef,
+  Input,
+  Output,
+} from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { SimpleUniqIdService } from 'src/app/share/service/simple-uniq-id.service';
 
 @Component({
   selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CheckboxComponent),
+      multi: true,
+    },
+  ],
 })
-export class CheckboxComponent {
-  @Input() value = new FormControl(false);
+export class CheckboxComponent implements ControlValueAccessor {
+  controllId: string;
 
   @Input() label = '';
 
-  @Output() onChange = new EventEmitter<boolean>();
+  @Input() ngModel = false;
 
-  controllId: string;
+  @Output() ngModelChange = new EventEmitter();
+
+  onChange: any = () => {};
+  onTouched: any = () => {};
 
   constructor(private simpleUniqIdService: SimpleUniqIdService) {
     this.controllId = this.simpleUniqIdService.getUniqId('checkbox');
   }
 
-  // private checkboxValue = new FormControl(this.value)
+  registerOnChange(fn: any) {
+    this.onChange = fn;
+  }
+
+  writeValue(value: boolean) {
+    this.ngModel = value;
+  }
+
+  registerOnTouched(fn: any) {
+    this.onTouched = fn;
+  }
 
   toggleValue() {
-    const val = !this.value.getRawValue();
+    const newValue = !this.ngModel;
 
-    this.value.setValue(val);
-    this.onChange.emit(val);
+    this.ngModel = newValue;
+
+    this.ngModelChange.emit(newValue);
+
+    this.onChange(newValue);
   }
 }

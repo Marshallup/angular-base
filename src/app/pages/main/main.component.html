@@ -1,16 +1,1 @@
-<app-checkbox-n [(ngModel)]="testValue" label="test" />
-
-<!-- <app-checkbox-n [ngModel]="tet" label="tttess" /> -->
-
-{{ testValue }}
-
-
-<form [formGroup]="form">
-  <app-checkbox-n formControlName="test" />
-</form>
-
-<pre>
-  {{ form.value | json }}
-</pre>
-
-<app-task-list />
+<app-task-list [tasks]="tasks" (onChangeTask)="onCompleteTask($event)" />

@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-task-item',
@@ -7,20 +6,14 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./task-item.component.scss'],
 })
 export class TaskItemComponent {
-  @Input() completeTask = new FormControl(false);
-  @Input() label = '';
+  @Input() completed = false;
+  @Input() title = '';
 
-  @Output() toggleTask: EventEmitter<boolean> = new EventEmitter();
+  @Output() onCompleted = new EventEmitter<boolean>();
 
-  constructor() {
-    this.onChange();
+  completedChange(value: boolean) {
+    this.onCompleted.emit(value);
   }
 
-  onChange() {
-    this.completeTask.valueChanges.subscribe((value) => {
-      if (value !== null) {
-        this.toggleTask.emit(value);
-      }
-    });
-  }
+  constructor() {}
 }

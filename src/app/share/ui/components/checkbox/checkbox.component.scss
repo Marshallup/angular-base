@@ -1,16 +1,32 @@
 .app-checkbox {
   &__item {
-    width: 20px;
-    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
     border: 1px solid black;
     border-radius: 100%;
+    color: black;
+    user-select: none;
+    cursor: pointer;
 
     &.checked {
-      background-color: black;
+      .app-checkbox {
+        &__check {
+          opacity: 1;
+        }
+      }
     }
+  }
+
+  &__check {
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
   &__label {
     cursor: text;
+    user-select: text;
   }
 }

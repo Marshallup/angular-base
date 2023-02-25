@@ -3,14 +3,16 @@
     [id]="controllId"
     class="app-checkbox__el"
     type="hidden"
-    [formControl]="value"
+    [value]="ngModel"
   />
 
   <div
     class="app-checkbox__item uk-margin-small-right"
-    [class.checked]="!!value.getRawValue()"
+    [class.checked]="ngModel"
     (click)="toggleValue()"
-  ></div>
+  >
+    <div class="app-checkbox__check"><app-check /></div>
+  </div>
 
   <label *ngIf="label" [htmlFor]="controllId" class="app-checkbox__label">{{
     label

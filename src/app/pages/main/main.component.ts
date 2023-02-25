@@ -1,54 +1,38 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-// import { FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { Task } from 'src/app/components/task/task-item';
+import { TaskItemChangeEmit } from 'src/app/components/task/task-list';
+import { SimpleUniqIdService } from 'src/app/share/service';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent implements OnChanges {
-  form: FormGroup;
-  testValue = false;
-  // checked = new FormControl(true);
+export class MainComponent {
+  tasks: Task[] = [];
 
-  // constructor() {
-  //   this.onChange()
-  // }
-
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
-      test: true,
-    });
+  constructor(private simpleUniqService: SimpleUniqIdService) {
+    this.tasks = [
+      {
+        id: this.simpleUniqService.getUniqId('task'),
+        title: 'sss',
+        completed: false,
+      },
+      {
+        id: this.simpleUniqService.getUniqId('task'),
+        title: 'q2323',
+        completed: true,
+      },
+    ];
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes, 'changes');
+  onCompleteTask(event: TaskItemChangeEmit) {
+    const { id, completed } = event;
+
+    const task = this.tasks.find((taskItem) => taskItem.id === id);
+
+    if (task) {
+      task.completed = completed;
+    }
   }
-
-  // ngOnInit(): void {
-  //   this.form = this.fb.group({
-  //     test: false,
-  //   });
-  // }
-
-  // onChange() {
-  //   this.checked.valueChanges.subscribe(item => {
-  //     console.log(item, 'subscribe change')
-  //   })
-  // }
-
-  // @Input() clone = false
-  // @Input() text = 'Content for duplication'
-
-  // toggleClone() {
-  //   console.log('this clone')
-  //   this.clone = !this.clone
-
-  //   if (!this.clone) {
-  //     this.text = 'Content for duplication'
-  //   } else {
-  //     this.text = 'Content duplicated'
-  //   }
-  // }
 }

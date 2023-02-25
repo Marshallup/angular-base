@@ -1,3 +1,11 @@
-.list-item {
-  cursor: pointer;
+:host ::ng-deep {
+  .list-item {
+    &--completed {
+      .app-checkbox__label {
+        color: var(--global-muted-color);
+        text-decoration: line-through;
+        transition: color 0.3s ease;
+      }
+    }
+  }
 }
