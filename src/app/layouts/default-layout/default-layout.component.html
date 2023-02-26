@@ -1,8 +1,12 @@
+<div class="uk-flex default-layout">
+  <div class="default-layout__sidebar" [class.default-layout__sidebar--open]="isOpenSidebar">
+    <app-sidebar />
+  </div>
+  <div class="uk-flex-1 default-layout__body">
+    <app-header (clickMenuIcon)="toggleSidebar()" />
 
-<app-header />
-
-<div class="uk-container">
-  <div class="default-layout">
-    <router-outlet />
+    <div class="default-layout__content">
+      <router-outlet />
+    </div>
   </div>
 </div>

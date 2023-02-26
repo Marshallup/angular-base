@@ -5,24 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
-// import { SharedModule } from './share/shared.module';
-// import { TaskItemComponent } from './components/task/task-item/task-item.component';
-// import { TaskListComponent } from './components/task/task-list/task-list.component';
-// import { CheckboxComponent } from './share/ui/components/checkbox/checkbox.component';
-// import { TestDirective } from './directives/test.directive';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SharedModule } from './share/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     DefaultLayoutComponent,
-    // TaskItemComponent,
-    // TaskListComponent,
-    // TestDirective,
+    SidebarComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent],
-  // exports: [TaskItemComponent],
 })
 export class AppModule {}

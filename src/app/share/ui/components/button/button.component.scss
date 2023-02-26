@@ -1,0 +1,12 @@
+$width: 35px;
+
+:host {
+  &.uk-button-small.uk-button-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $width;
+    height: $width;
+    padding: 5px;
+  }
+}

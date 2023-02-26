@@ -1,3 +1,10 @@
 <div class="app-header">
-  <div class="uk-container app-header__container">Header</div>
+  <div class="app-header__container uk-flex uk-flex-middle">
+    <button app-button size="small" styleType="primary" [icon]="true" class="uk-margin-small-right" (click)="onClickMenuIcon()">
+      <app-menu />
+    </button>
+    <div>
+      Header
+    </div>
+  </div>
 </div>

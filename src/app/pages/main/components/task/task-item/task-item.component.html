@@ -1,0 +1,8 @@
+<div class="list-item" [class.list-item--completed]="completed">
+  <div class="uk-flex">
+    <app-checkbox [ngModel]="completed" (ngModelChange)="completedChange($event)" class="list-item__check" />
+
+    <p *ngIf="!mode || mode === 'read'" tabindex="10" class="uk-text-default list-item__title" [class.list-item__title--empty]="!title.length" (click)="onClickTitleText()">{{title}}</p>
+    <textarea *ngIf="mode === 'edit'" appAutofocus [(ngModel)]="title" class="uk-textarea" (blur)="onBlurTaskItem()"></textarea>
+  </div>
+</div>

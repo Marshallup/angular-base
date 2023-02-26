@@ -4,8 +4,8 @@ import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
 import { DirectivesModule } from 'src/app/directives/directives.module';
 import { SharedModule } from 'src/app/share/shared.module';
-import { TaskItemComponent } from 'src/app/components/task/task-item/task-item.component';
-import { TaskListComponent } from 'src/app/components/task/task-list/task-list.component';
+import { TaskItemComponent } from './components/task/task-item/task-item.component';
+import { TaskListComponent } from './components/task/task-list/task-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { TestDirective } from '../../directives/test.directive';
 

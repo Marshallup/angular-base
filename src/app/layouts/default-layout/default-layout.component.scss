@@ -1,5 +1,26 @@
 @import "src/assets/styles/vars.scss";
 
 .default-layout {
-  padding: $global-margin 0 $global-margin;
+  &__sidebar {
+    width: 70px;
+    max-width: 250px;
+    min-width: 70px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: 1px solid $global-border;
+    margin-right: -1px;
+    transition: width 0.3s ease;
+
+    &--open {
+      width: 20%;
+    }
+  }
+
+  &__body {
+    transition: width 0.3s ease;
+  }
+
+  &__content {
+    padding: $global-margin;
+  }
 }

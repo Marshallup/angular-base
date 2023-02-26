@@ -4,8 +4,7 @@
   color: $global-inverse-color;
 
   &__container {
-    padding-top: $global-margin;
-    padding-bottom: $global-margin;
+    padding: $global-margin;
     background-color: $global-primary-background;
   }
 }
