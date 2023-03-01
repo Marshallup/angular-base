@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,6 +7,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SharedModule } from './share/shared.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers, metaReducers } from './reducers';
+import { TaskTypesComponent } from './components/task-types/task-types.component';
+// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -14,8 +19,17 @@ import { SharedModule } from './share/shared.module';
     HeaderComponent,
     DefaultLayoutComponent,
     SidebarComponent,
+    TaskTypesComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, SharedModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    // isDevMode() ? StoreDevtoolsModule.instrument() : [],
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

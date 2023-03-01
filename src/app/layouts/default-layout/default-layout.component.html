@@ -1,7 +1,5 @@
 <div class="uk-flex default-layout">
-  <div class="default-layout__sidebar" [class.default-layout__sidebar--open]="isOpenSidebar">
-    <app-sidebar />
-  </div>
+  <app-sidebar [open]="isOpenSidebar" />
   <div class="uk-flex-1 default-layout__body">
     <app-header (clickMenuIcon)="toggleSidebar()" />
 

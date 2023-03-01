@@ -6,6 +6,7 @@ import { CheckboxComponent } from './ui/components/checkbox/checkbox.component';
 import { CheckComponent } from './ui/components/icons/check/check.component';
 import { MenuComponent } from './ui/components/icons/menu/menu.component';
 import { AutofocusDirective } from './directives/autofocus.directive';
+import { CardComponent } from './ui/components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { AutofocusDirective } from './directives/autofocus.directive';
     CheckComponent,
     MenuComponent,
     AutofocusDirective,
+    CardComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule],
   exports: [
@@ -22,6 +24,7 @@ import { AutofocusDirective } from './directives/autofocus.directive';
     CheckComponent,
     MenuComponent,
     AutofocusDirective,
+    CardComponent,
   ],
 })
 export class SharedModule {}
