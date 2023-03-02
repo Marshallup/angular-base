@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { Task } from './components/task/task-item';
 import {
   TaskItemBlurEmit,
-  TaskItemChangeEmit,
   TaskItemCompletedEmit,
   TaskItemEmitMode,
 } from './components/task/task-list';
-import { SimpleUniqIdService } from 'src/app/share/service';
+import { getUniqId } from 'src/app/share/utils';
 
 @Component({
   selector: 'app-main',
@@ -16,16 +15,16 @@ import { SimpleUniqIdService } from 'src/app/share/service';
 export class MainComponent {
   tasks: Task[] = [];
 
-  constructor(private simpleUniqService: SimpleUniqIdService) {
+  constructor() {
     this.tasks = [
       {
-        id: this.simpleUniqService.getUniqId('task'),
+        id: getUniqId('task'),
         title: 'sss',
         completed: false,
         mode: 'edit',
       },
       {
-        id: this.simpleUniqService.getUniqId('task'),
+        id: getUniqId('task'),
         title: 'q2323',
         completed: true,
         mode: 'read',

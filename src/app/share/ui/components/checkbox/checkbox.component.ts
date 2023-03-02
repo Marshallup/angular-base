@@ -6,7 +6,7 @@ import {
   Output,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { SimpleUniqIdService } from 'src/app/share/service/simple-uniq-id.service';
+import { getUniqId } from 'src/app/share/utils';
 
 @Component({
   selector: 'app-checkbox',
@@ -32,8 +32,8 @@ export class CheckboxComponent implements ControlValueAccessor {
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  constructor(private simpleUniqIdService: SimpleUniqIdService) {
-    this.controllId = this.simpleUniqIdService.getUniqId('checkbox');
+  constructor() {
+    this.controllId = getUniqId('checkbox');
   }
 
   registerOnChange(fn: any) {

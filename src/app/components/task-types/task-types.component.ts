@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Task } from 'src/app/models';
 import { TaskState } from 'src/app/reducers/task';
 import { taskAdd } from 'src/app/reducers/task/task.actions';
-import { selectTasks } from 'src/app/reducers/task/task.selector';
+import { getTaskById, selectTasks } from 'src/app/reducers/task/task.selector';
 
 @Component({
   selector: 'app-task-types',
@@ -17,5 +17,11 @@ export class TaskTypesComponent {
 
   addTask() {
     this.taskStore$.dispatch(taskAdd({ task: { id: 2, title: '123123123' } }));
+  }
+
+  getTaskById() {
+    this.taskStore$.pipe(select(getTaskById(1))).subscribe((item) => {
+      console.log(item, 'item');
+    });
   }
 }
