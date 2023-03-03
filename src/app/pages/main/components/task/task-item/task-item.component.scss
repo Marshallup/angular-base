@@ -12,10 +12,11 @@
   }
 
   &__title {
+    height: 45px;
     margin: 0;
-    padding: 6px 10px;
     border: 1px solid transparent;
     cursor: text;
+    resize: none;
 
     &--empty {
       width: 100%;

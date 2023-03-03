@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Task } from 'src/app/models';
 import { TaskState } from 'src/app/reducers/task';
 import { taskAdd } from 'src/app/reducers/task/task.actions';
-import { getTaskById, selectTasks } from 'src/app/reducers/task/task.selector';
+import { selectTasks } from 'src/app/reducers/task/task.selector';
 
 @Component({
   selector: 'app-task-types',
@@ -16,12 +16,18 @@ export class TaskTypesComponent {
   constructor(private taskStore$: Store<TaskState>) {}
 
   addTask() {
-    this.taskStore$.dispatch(taskAdd({ task: { id: 2, title: '123123123' } }));
+    this.taskStore$.dispatch(
+      taskAdd({ id: 'eee2222', title: '123123123', completed: false })
+    );
+  }
+
+  updateTask() {
+    // this.taskStore$.di
   }
 
   getTaskById() {
-    this.taskStore$.pipe(select(getTaskById(1))).subscribe((item) => {
-      console.log(item, 'item');
-    });
+    // this.taskStore$.pipe(select(getTaskById('eee2222'))).subscribe((item) => {
+    //   console.log(item, 'item');
+    // });
   }
 }

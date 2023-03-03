@@ -1,1 +1,1 @@
-<app-task-list [tasks]="tasks" (onChangeTask)="onChangeTask($event)" (onCompletedTask)="onCompletedTask($event)" (onChangeMode)="onChangeMode($event)" (onBlurTask)="onBlurTask($event)" />
+<app-task-list [tasks]="tasks$ | async" (onChangeTask)="onChangeTask($event)" (onCompletedTask)="onCompletedTask($event)" (onChangeMode)="onChangeMode($event)" (onBlurTask)="onBlurTask($event)" />

@@ -5,7 +5,8 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Task, TaskItemBlur, TaskMode } from './types';
+import { Task, TaskMode } from 'src/app/models';
+import { TaskItemBlur } from './types';
 
 @Component({
   selector: 'app-task-item',

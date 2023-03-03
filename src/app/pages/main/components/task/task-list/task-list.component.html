@@ -1,7 +1,9 @@
 <ul class="uk-list uk-list-divider">
-  <li *ngFor="let task of tasks">
-    <app-task-item [completed]="task.completed" [title]="task.title" [mode]="task.mode" (onCompleted)="onCompletedTaskChange($event, task.id)" (changeMode)="onModeChange($event, task.id)" (blurTaskItem)="onBlurTaskItem($event, task.id)" />
-  </li>
+  <ng-template ngFor let-task [ngForOf]="tasks" [ngForTrackBy]="trackByFn">
+    <li>
+      <app-task-item [completed]="task.completed" [title]="task.title" [mode]="task.mode" (onCompleted)="onCompletedTaskChange($event, task.id)" (changeMode)="onModeChange($event, task.id)" (blurTaskItem)="onBlurTaskItem($event, task.id)" />
+    </li>
+  </ng-template>
 </ul>
 
 {{ tasks | json }}

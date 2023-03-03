@@ -1,4 +1,4 @@
-import { Task } from '../task-item';
+import { Task } from 'src/app/models';
 
 export interface TaskItemChangeEmit extends Pick<Task, 'id' | 'completed'> {}
 export interface TaskItemEmitMode extends Pick<Task, 'id' | 'mode'> {}

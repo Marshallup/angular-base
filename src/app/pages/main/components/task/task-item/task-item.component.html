@@ -2,7 +2,6 @@
   <div class="uk-flex">
     <app-checkbox [ngModel]="completed" (ngModelChange)="completedChange($event)" class="list-item__check" />
 
-    <p *ngIf="!mode || mode === 'read'" tabindex="10" class="uk-text-default list-item__title" [class.list-item__title--empty]="!title.length" (click)="onClickTitleText()">{{title}}</p>
-    <textarea *ngIf="mode === 'edit'" appAutofocus [(ngModel)]="title" class="uk-textarea" (blur)="onBlurTaskItem()"></textarea>
+    <textarea [(ngModel)]="title" tabindex="10" class="uk-textarea" [class.list-item__title]="!mode || mode ==='read'" (click)="onClickTitleText()" (blur)="onBlurTaskItem()"></textarea>
   </div>
 </div>

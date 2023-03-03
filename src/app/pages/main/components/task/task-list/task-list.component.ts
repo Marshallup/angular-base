@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Task, TaskItemBlur } from '../task-item';
+import { Task } from 'src/app/models';
+import { TaskItemBlur } from '../task-item';
 import {
   TaskItemBlurEmit,
-  TaskItemChangeEmit,
   TaskItemCompletedEmit,
   TaskItemEmitMode,
 } from './types';
@@ -13,7 +13,7 @@ import {
   styleUrls: ['./task-list.component.scss'],
 })
 export class TaskListComponent {
-  @Input() tasks: Task[] = [];
+  @Input() tasks: Task[] | null = [];
 
   @Output() onChangeTask = new EventEmitter<Task>();
   @Output() onChangeMode = new EventEmitter<TaskItemEmitMode>();
@@ -21,6 +21,10 @@ export class TaskListComponent {
   @Output() onCompletedTask = new EventEmitter<TaskItemCompletedEmit>();
 
   constructor() {}
+
+  trackByFn(index: number, item: Task) {
+    return item.id;
+  }
 
   onCompletedTaskChange(completed: Task['completed'], id: Task['id']) {
     this.onCompletedTask.emit({ id, completed });

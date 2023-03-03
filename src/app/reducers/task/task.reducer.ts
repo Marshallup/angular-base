@@ -11,15 +11,16 @@ export interface TaskState {
 export const initialTaskState: TaskState = {
   tasks: [
     {
-      id: 1,
+      id: 'task-222',
       title: 'qweqwe',
+      completed: false,
     },
   ],
 };
 
 export const taskReducer = createReducer(
   initialTaskState,
-  on(taskActions.taskAdd, (state, { task }) => {
+  on(taskActions.taskAdd, (state, { type, ...task }) => {
     const taskIdx = state.tasks.findIndex(
       (taskState) => taskState.id === task.id
     );
@@ -35,6 +36,51 @@ export const taskReducer = createReducer(
     return {
       ...state,
       tasks,
+    };
+  }),
+  on(taskActions.updateTaskModeById, (state, { id, mode }) => {
+    return {
+      ...state,
+      tasks: state.tasks.map((task) => {
+        if (task.id === id) {
+          return {
+            ...task,
+            mode,
+          };
+        }
+        return task;
+      }),
+    };
+  }),
+  on(taskActions.updateTaskModeTitleById, (state, { id, mode, title }) => {
+    return {
+      ...state,
+      tasks: state.tasks.map((task) => {
+        if (task.id === id) {
+          return {
+            ...task,
+            mode,
+            title,
+          };
+        }
+
+        return task;
+      }),
+    };
+  }),
+  on(taskActions.updateTaskCompletedById, (state, { id, completed }) => {
+    return {
+      ...state,
+      tasks: state.tasks.map((task) => {
+        if (task.id === id) {
+          return {
+            ...task,
+            completed,
+          };
+        }
+
+        return task;
+      }),
     };
   })
 );
