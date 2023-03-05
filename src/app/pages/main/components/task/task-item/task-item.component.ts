@@ -5,8 +5,11 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Task, TaskMode } from 'src/app/models';
-import { TaskItemBlur } from './types';
+import { TaskState } from 'src/app/reducers/task';
+import { removeTaskById } from 'src/app/reducers/task/task.actions';
+import { TaskItemBlurEmit } from './types';
 
 @Component({
   selector: 'app-task-item',
@@ -16,11 +19,12 @@ import { TaskItemBlur } from './types';
 export class TaskItemComponent {
   @Input() completed = false;
   @Input() title = '';
+  @Input() id: Task['id'] = '';
   @Input() mode: Task['mode'] = 'read';
 
   @Output() onCompleted = new EventEmitter<boolean>();
   @Output() changeMode = new EventEmitter<TaskMode>();
-  @Output() blurTaskItem = new EventEmitter<TaskItemBlur>();
+  @Output() blurTaskItem = new EventEmitter<TaskItemBlurEmit>();
 
   completedChange(value: boolean) {
     this.onCompleted.emit(value);
@@ -35,12 +39,14 @@ export class TaskItemComponent {
   }
 
   onBlurTaskItem() {
-    this.blurTaskItem.emit({
-      title: this.title,
-      completed: this.completed,
-      mode: this.mode,
-    });
+    if (!this.title) {
+      this.taskStore$.dispatch(removeTaskById({ id: this.id }));
+    } else {
+      this.blurTaskItem.emit({
+        title: this.title,
+      });
+    }
   }
 
-  constructor() {}
+  constructor(private taskStore$: Store<TaskState>) {}
 }

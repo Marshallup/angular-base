@@ -1,7 +1,15 @@
-<p>task-types works!</p>
+<app-card size="small" class="app-task-types">
+  <div class="app-task-types__content">
+    <span>{{ title }}</span>
+    <span>{{ count }}</span>
+  </div>
+</app-card>
+<!-- <app-card size="small" class="app-task-types" /> -->
+
+<!-- <br />
 
 <button (click)="addTask()">add task</button>
 
 <button (click)="getTaskById()">get task</button>
 
-{{ tasks$ | async | json }}
+{{ tasks$ | async | json }} -->

@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  margin-bottom: 15px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.app-task-types {
+  &__content {
+    display: flex;
+    justify-content: space-between;
+  }
+}

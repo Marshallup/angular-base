@@ -7,6 +7,7 @@ export enum taskActionsType {
   updateTaskModeById = '[TASK] updateTaskModeById',
   updateTaskModeTitleById = '[TASK] updateTaskModeTitleById',
   updateTaskCompletedById = '[TASK] updateTaskCompletedById',
+  removeTaskById = '[TASK] removeTaskById',
 }
 
 export const taskAdd = createAction(taskActionsType.addTask, props<Task>());
@@ -29,4 +30,9 @@ export const updateTaskModeTitleById = createAction(
 export const updateTaskCompletedById = createAction(
   taskActionsType.updateTaskCompletedById,
   props<Pick<Task, 'id' | 'completed'>>()
+);
+
+export const removeTaskById = createAction(
+  taskActionsType.removeTaskById,
+  props<Pick<Task, 'id'>>()
 );

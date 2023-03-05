@@ -1,3 +1,3 @@
 import { Task } from 'src/app/models';
 
-export interface TaskItemBlur extends Omit<Task, 'id'> {}
+export interface TaskItemBlurEmit extends Pick<Task, 'title'> {}

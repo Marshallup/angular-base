@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { Task } from 'src/app/models';
+import { categories, Task } from 'src/app/models';
 import * as taskActions from './task.actions';
 
 export const taskFeatureKey = 'task';
@@ -14,6 +14,13 @@ export const initialTaskState: TaskState = {
       id: 'task-222',
       title: 'qweqwe',
       completed: false,
+      category: categories.all,
+    },
+    {
+      id: 'task-333',
+      title: 'qq22222',
+      completed: false,
+      category: categories.today,
     },
   ],
 };
@@ -25,7 +32,7 @@ export const taskReducer = createReducer(
       (taskState) => taskState.id === task.id
     );
 
-    const tasks = [...state.tasks];
+    const tasks: Task[] = [...state.tasks];
 
     if (taskIdx > -1) {
       tasks[taskIdx] = { ...tasks[taskIdx], ...task };
@@ -81,6 +88,12 @@ export const taskReducer = createReducer(
 
         return task;
       }),
+    };
+  }),
+  on(taskActions.removeTaskById, (state, { id }) => {
+    return {
+      ...state,
+      tasks: state.tasks.filter((task) => task.id !== id),
     };
   })
 );

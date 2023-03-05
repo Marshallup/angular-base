@@ -10,6 +10,14 @@ export const selectTasks = createSelector(
   (state) => state.tasks
 );
 
+export const getTaskCategoryAll = createSelector(selectTaskFeature, (state) =>
+  state.tasks.filter((task) => task.category.code === 'all')
+);
+
+export const getTaskCategoryToday = createSelector(selectTaskFeature, (state) =>
+  state.tasks.filter((task) => task.category.code === 'today')
+);
+
 export const getTaskById = (id: Task['id']) =>
   createSelector(selectTaskFeature, (state) =>
     state.tasks.find((task) => task.id === id)

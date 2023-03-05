@@ -11,6 +11,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { reducers, metaReducers } from './reducers';
 import { TaskTypesComponent } from './components/task-types/task-types.component';
+import { TaskTypesListComponent } from './components/task-types-list/task-types-list.component';
 // import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { TaskTypesComponent } from './components/task-types/task-types.component
     DefaultLayoutComponent,
     SidebarComponent,
     TaskTypesComponent,
+    TaskTypesListComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,18 @@
 <div class="list-item" [class.list-item--completed]="completed">
   <div class="uk-flex">
-    <app-checkbox [ngModel]="completed" (ngModelChange)="completedChange($event)" class="list-item__check" />
+    <app-checkbox
+      [ngModel]="completed"
+      class="list-item__check"
+      (ngModelChange)="completedChange($event)"
+    />
 
-    <textarea [(ngModel)]="title" tabindex="10" class="uk-textarea" [class.list-item__title]="!mode || mode ==='read'" (click)="onClickTitleText()" (blur)="onBlurTaskItem()"></textarea>
+    <textarea
+      [(ngModel)]="title"
+      tabindex="10"
+      class="uk-textarea"
+      [class.list-item__title]="!mode || mode ==='read'"
+      (click)="onClickTitleText()"
+      (blur)="onBlurTaskItem()"
+    ></textarea>
   </div>
 </div>

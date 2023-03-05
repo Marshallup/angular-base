@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from 'src/app/models';
-import { TaskItemBlur } from '../task-item';
+import { TaskItemBlurEmit } from '../task-item';
 import {
-  TaskItemBlurEmit,
   TaskItemCompletedEmit,
   TaskItemEmitMode,
+  TaskCurrentBlurEmit,
 } from './types';
 
 @Component({
@@ -17,7 +17,7 @@ export class TaskListComponent {
 
   @Output() onChangeTask = new EventEmitter<Task>();
   @Output() onChangeMode = new EventEmitter<TaskItemEmitMode>();
-  @Output() onBlurTask = new EventEmitter<TaskItemBlurEmit>();
+  @Output() onBlurTask = new EventEmitter<TaskCurrentBlurEmit>();
   @Output() onCompletedTask = new EventEmitter<TaskItemCompletedEmit>();
 
   constructor() {}
@@ -34,7 +34,7 @@ export class TaskListComponent {
     this.onChangeMode.emit({ id, mode });
   }
 
-  onBlurTaskItem({ title }: TaskItemBlur, id: Task['id']) {
+  onBlurTaskItem({ title }: TaskItemBlurEmit, id: Task['id']) {
     this.onBlurTask.emit({ id, title, mode: 'read' });
   }
 }
