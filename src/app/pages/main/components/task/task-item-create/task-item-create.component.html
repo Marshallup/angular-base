@@ -1,0 +1,7 @@
+<app-task-item
+  [isCreate]="true"
+  [ngModel]="title"
+  [mode]="mode"
+  (changeMode)="onChangeMode($event)"
+  (blurTaskItem)="onBlur($event)"
+/>

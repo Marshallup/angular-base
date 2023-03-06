@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/share/shared.module';
 import { TaskItemComponent } from './components/task/task-item/task-item.component';
 import { TaskListComponent } from './components/task/task-list/task-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TaskItemCreateComponent } from './components/task/task-item-create/task-item-create.component';
 // import { TestDirective } from '../../directives/test.directive';
 
 @NgModule({
@@ -14,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MainComponent,
     TaskItemComponent,
     TaskListComponent,
+    TaskItemCreateComponent,
     // TestDirective
   ],
   imports: [

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { categories, Task } from 'src/app/models';
+import { Task } from 'src/app/models';
 import { TaskState } from 'src/app/reducers/task';
 // import { taskAdd } from 'src/app/reducers/task/task.actions';
 import {
-  getTaskCategoryAll,
+  getTaskCategoryCompleted,
   getTaskCategoryToday,
   selectTasks,
 } from 'src/app/reducers/task/task.selector';
@@ -16,13 +16,12 @@ import {
   styleUrls: ['./task-types-list.component.scss'],
 })
 export class TaskTypesListComponent {
-  categories = categories;
-
-  tasksAll$: Observable<Task[]> = this.taskStore$.pipe(
-    select(getTaskCategoryAll)
-  );
+  tasksAll$: Observable<Task[]> = this.taskStore$.pipe(select(selectTasks));
   tasksToday$: Observable<Task[]> = this.taskStore$.pipe(
     select(getTaskCategoryToday)
+  );
+  tasksCompleted$: Observable<Task[]> = this.taskStore$.pipe(
+    select(getTaskCategoryCompleted)
   );
 
   constructor(private taskStore$: Store<TaskState>) {}

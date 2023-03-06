@@ -1,13 +1,14 @@
-<div class="list-item" [class.list-item--completed]="completed">
+<div class="list-item" [class.list-item--completed]="completed" [class.list-item--create]="isCreate">
   <div class="uk-flex">
     <app-checkbox
       [ngModel]="completed"
+      [readonly]="isCreate"
       class="list-item__check"
       (ngModelChange)="completedChange($event)"
     />
 
     <textarea
-      [(ngModel)]="title"
+      [(ngModel)]="ngModel"
       tabindex="10"
       class="uk-textarea"
       [class.list-item__title]="!mode || mode ==='read'"

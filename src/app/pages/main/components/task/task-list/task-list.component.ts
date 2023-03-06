@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Task } from 'src/app/models';
+import { TaskState } from 'src/app/reducers/task';
+import { removeTaskById } from 'src/app/reducers/task/task.actions';
 import { TaskItemBlurEmit } from '../task-item';
 import {
   TaskItemCompletedEmit,
@@ -20,7 +23,7 @@ export class TaskListComponent {
   @Output() onBlurTask = new EventEmitter<TaskCurrentBlurEmit>();
   @Output() onCompletedTask = new EventEmitter<TaskItemCompletedEmit>();
 
-  constructor() {}
+  constructor(private taskStore$: Store<TaskState>) {}
 
   trackByFn(index: number, item: Task) {
     return item.id;
@@ -35,6 +38,10 @@ export class TaskListComponent {
   }
 
   onBlurTaskItem({ title }: TaskItemBlurEmit, id: Task['id']) {
-    this.onBlurTask.emit({ id, title, mode: 'read' });
+    if (!title) {
+      this.taskStore$.dispatch(removeTaskById({ id }));
+    } else {
+      this.onBlurTask.emit({ id, title, mode: 'read' });
+    }
   }
 }

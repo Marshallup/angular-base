@@ -1,4 +1,5 @@
 <div class="app-task-types__list">
-  <app-task-types [title]="categories.all.title" [count]="(tasksAll$ | async)?.length || 0" />
-  <app-task-types [title]="categories.today.title" [count]="(tasksToday$ | async)?.length || 0" />
+  <app-task-types title="Все" [count]="(tasksAll$ | async)?.length || 0" />
+  <app-task-types title="Сегодня" [count]="(tasksToday$ | async)?.length || 0" />
+  <app-task-types title="Выполненные" [count]="(tasksCompleted$ | async)?.length || 0" />
 </div>

@@ -27,6 +27,8 @@ export class CheckboxComponent implements ControlValueAccessor {
 
   @Input() ngModel = false;
 
+  @Input() readonly = false;
+
   @Output() ngModelChange = new EventEmitter();
 
   onChange: any = () => {};
@@ -41,7 +43,9 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
 
   writeValue(value: boolean) {
-    this.ngModel = value;
+    if (!this.readonly) {
+      this.ngModel = value;
+    }
   }
 
   registerOnTouched(fn: any) {
@@ -49,12 +53,14 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
 
   toggleValue() {
-    const newValue = !this.ngModel;
+    if (!this.readonly) {
+      const newValue = !this.ngModel;
 
-    this.ngModel = newValue;
+      this.ngModel = newValue;
 
-    this.ngModelChange.emit(newValue);
+      this.ngModelChange.emit(newValue);
 
-    this.onChange(newValue);
+      this.onChange(newValue);
+    }
   }
 }

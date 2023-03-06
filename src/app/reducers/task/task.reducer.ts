@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { categories, Task } from 'src/app/models';
+import { Task } from 'src/app/models';
 import * as taskActions from './task.actions';
 
 export const taskFeatureKey = 'task';
@@ -14,13 +14,13 @@ export const initialTaskState: TaskState = {
       id: 'task-222',
       title: 'qweqwe',
       completed: false,
-      category: categories.all,
+      createdAt: new Date('2022.02.02'),
     },
     {
       id: 'task-333',
       title: 'qq22222',
       completed: false,
-      category: categories.today,
+      createdAt: new Date(),
     },
   ],
 };
